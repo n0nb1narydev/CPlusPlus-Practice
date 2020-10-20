@@ -1,6 +1,6 @@
 #include <iostream>
 
-// You are an explorer who has found a strange looking cave. Upon entering you see a strange room filled with chests of varying sizes. You notice, all of them have a locking mechanism that has 3 number dials. Start with the smallest chest first to crack the code an gain the loot. But, hurry. There is probably someone or some...thing supposed to be guarding this room.
+//
 
 // Need to find a valid combination of codes
 
@@ -9,7 +9,15 @@
 // Main function
 int main()
 {
-    std::cout << "Hello, World!";
+    std::cout << "You are an explorer who has found a strange looking cave.";
+    std::cout << std::endl;
+    std::cout << "Upon entering you see a strange room filled with chests of varying sizes.";
+    std::cout << std::endl;
+    std::cout << "You notice, all of them have a locking mechanism that has 3 number dials.";
+    std::cout << std::endl;
+    std::cout << "Start with the smallest chest first to crack the code an gain the loot.";
+    std::cout << std::endl;
+    std::cout << "But, hurry.There is probably someone or some... thing supposed to be guarding this room.";
     return 0;
 }
 // int main() // int is to let you know what value type the function is returning.
