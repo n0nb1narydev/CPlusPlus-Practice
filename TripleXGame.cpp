@@ -1,5 +1,4 @@
 #include <iostream>
-// main or game function
 
 // You are an explorer who has found a strange looking cave. Upon entering you see a strange room filled with chests of varying sizes. You notice, all of them have a locking mechanism that has 3 number dials. Start with the smallest chest first to crack the code an gain the loot. But, hurry. There is probably someone or some...thing supposed to be guarding this room.
 
@@ -7,12 +6,11 @@
 
 // starts easy and becomes much harder
 
-
 // Main function
 int main()
 {
-
-    return 0;  
+    std::cout << "Hello, World!";
+    return 0;
 }
 // int main() // int is to let you know what value type the function is returning.
 // {
