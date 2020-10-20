@@ -11,8 +11,11 @@
 
 
 // Main function
-
-// int main()
+int main()
+{
+    return 0;  
+}
+// int main() // int is to let you know what value type the function is returning.
 // {
 //     int difficulty = 2;
 //     int maxDifficulty = 10;
