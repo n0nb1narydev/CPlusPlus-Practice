@@ -16,7 +16,7 @@ string Items[10] =
         "The Ring Of Winter. Brrr is it cold in here?",
         "The Deck Of Many Things. Time to play some cards?"};
 
-void GreetPlayer()
+void GreetPlayer(int MaxDifficulty)
 {
     std::cout << std::endl;
     std::cout << R"(
@@ -43,7 +43,7 @@ void GreetPlayer()
 )" << '\n';
     std::cout << "=+=+=+=+=+=+=+=+=+=+=+=+=+= Welcome Traveler =+=+=+=+=+=+=+=+=+=+=+=+=+=\n";
     std::cout << "While exploring, you have found a strange looking cave.\n"; //  << std::endl also ends the line.
-    std::cout << "Upon entering you see a large room filled with 10 chests of varying sizes.\n";
+    std::cout << "Upon entering you see a large room filled with " << MaxDifficulty << " chests of varying sizes.\n";
     std::cout << "You notice, all of them have a locking mechanism that has 3 number dials.\n";
     std::cout << "Start with the smallest chest first to crack the code an gain the loot.\n";
     std::cout << "But, hurry.There is probably someone or some... thing supposed to be guarding this room.\n\n";
@@ -82,7 +82,7 @@ bool PlayGame(int Difficulty)
     }
     else
     {
-        std::cout << "Your combination was incorrect!\nYou have set off a trap and are now stuck in a net 20ft off the ground.";
+        std::cout << "Your combination was incorrect! Try again.";
         return false;
     }
 }
@@ -90,11 +90,13 @@ bool PlayGame(int Difficulty)
 // Main function
 int main()
 {
-    GreetPlayer();
 
     int Difficulty = 1;
+    int const MaxDifficulty = 10;
 
-    while (true)
+    GreetPlayer(MaxDifficulty);
+
+    while (Difficulty <= MaxDifficulty) // Loops the game until all levels are completed
     {
         bool bLevelComplete = PlayGame(Difficulty);
         std::cin.clear();  // clears the failbit
@@ -105,19 +107,6 @@ int main()
             ++Difficulty;
         }
     }
+    std::cout << "Congratulations, You have unlocked all of the chests!\nUh oh... You see a large pair of eyes peering at you from the darkness. RUN!";
     return 0;
 }
-
-// int main() // int is to let you know what value type the function is returning.
-// {
-//     int difficulty = 2;
-//     int maxDifficulty = 10;
-//     while (difficulty <= maxDifficulty)
-//     {
-//         PlayGame(difficulty);
-
-//         ++difficulty;
-//     }
-//      std::cout << "You have unlocked all of the chests! Uh oh... You see a large pair of eyes peering at you from the darkness. RUN!"
-//      return 0; // exits the program with no errors
-// }
