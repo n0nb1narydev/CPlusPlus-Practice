@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using std::string;
 
@@ -52,9 +53,9 @@ void GreetPlayer(int MaxDifficulty)
 bool PlayGame(int Difficulty)
 {
     // Declare 3 number code
-    const int CodeA = 4;
-    const int CodeB = 3;
-    const int CodeC = 2;
+    const int CodeA = rand() % Difficulty + Difficulty;
+    const int CodeB = rand() % Difficulty + Difficulty;
+    const int CodeC = rand() % Difficulty + Difficulty;
 
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
@@ -77,7 +78,7 @@ bool PlayGame(int Difficulty)
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
         std::cout << "You have unlocked the chest!\n";
-        std::cout << "You receive " << Items[Difficulty - 1];
+        std::cout << "***You receive " << Items[Difficulty - 1] << "***";
         return true;
     }
     else
@@ -90,7 +91,7 @@ bool PlayGame(int Difficulty)
 // Main function
 int main()
 {
-
+    srand(time(NULL)); // Creates new random sequence based on the time of day
     int Difficulty = 1;
     int const MaxDifficulty = 10;
 
