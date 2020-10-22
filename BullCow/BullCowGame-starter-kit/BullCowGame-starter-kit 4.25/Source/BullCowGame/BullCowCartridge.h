@@ -17,4 +17,5 @@ public:
 
 private:
 	FString HiddenWord;
+	int lives;
 };
