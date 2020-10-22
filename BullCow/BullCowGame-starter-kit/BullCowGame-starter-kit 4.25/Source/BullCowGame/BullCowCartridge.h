@@ -15,6 +15,7 @@ public:
 	virtual void BeginPlay() override;
 	virtual void OnInput(const FString &Input) override;
 	void SetupGame();
+	void EndGame();
 
 private:
 	FString HiddenWord;
