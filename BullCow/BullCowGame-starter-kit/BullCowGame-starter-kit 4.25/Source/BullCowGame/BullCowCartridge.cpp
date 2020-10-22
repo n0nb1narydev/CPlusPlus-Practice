@@ -3,11 +3,12 @@
 
 void UBullCowCartridge::BeginPlay() // When the game starts
 {
-    Super::BeginPlay();                                    // Game won't work without this
-    PrintLine(TEXT("Mooooo! Let's play some Bull Cows!")); // Just like std::cout << "Welcome!";                   // using TEXT macro for strings
-    // For strings, instead of std::string Word = "Welcome!"; use FString.
+    Super::BeginPlay();
 
     SetupGame();
+
+    PrintLine(TEXT("The HiddenWord is: %s."), *HiddenWord); // Debug Line
+    PrintLine(TEXT("Mooooo! Let's play some Bull Cows!"));
 
     // prompt player for guess
 }
@@ -16,9 +17,10 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
 {
     ClearScreen();
 
-    while (lives > 0)
+    while (Lives > 0)
     {
-        PrintLine(TEXT("Guess the 4 letter word!"));
+        PrintLine(TEXT("Guess the %i letter word!"), HiddenWord.Len());
+        PrintLine(TEXT("Type in your guess and press enter."));
 
         // check guess
         // check if isogram
@@ -26,28 +28,32 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
         // check if correct number of chars
         // guess again no lives lost
 
-        if (Input == HiddenWord)
+        if (Input == HiddenWord.ToLower())
         {
-            PrintLine("Huzzah! You guessed the hidden word!");
+            PrintLine(TEXT("Huzzah! You guessed the hidden word!"));
+            // bGameOver = true;
             break;
+        }
+        else if (Input.Len() != HiddenWord.Len()) // || Input not isogram)
+        {
+            PrintLine(TEXT("The hidden word is an isogram that is %i characters long."), HiddenWord.Len());
         }
         else
         {
             PrintLine("Moo... You got it wrong. Try again!");
             // Show lives left
             // Guess again
+            Lives--;
         }
-
-        lives--;
     }
-
-    if (lives == 0)
+    if (Lives == 0)
     {
-        PrintLine("The hidden word was: " + HiddenWord + "...");
-        PrintLine("You ran out of lives. :(");
+        PrintLine(TEXT("You ran out of lives."));
+        PrintLine((TEXT("The HiddenWord was: %s..."), *HiddenWord));
+        // bGameOver = true;
     }
     // Prompt to play again
-    PrintLine("Would you like to play again?");
+    PrintLine(TEXT("Would you like to play again?"));
     // Check input
     // Play again or quit
 }
@@ -55,7 +61,8 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
 void UBullCowCartridge::SetupGame()
 {
     HiddenWord = TEXT("dung");
-    Lives = 4;
+    Lives = HiddenWord.Len();
+    // bGameOver = false;
 }
 /* 
 Game Loop 
