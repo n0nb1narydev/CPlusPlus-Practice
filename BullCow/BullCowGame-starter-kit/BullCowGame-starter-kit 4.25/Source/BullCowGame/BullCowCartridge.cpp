@@ -7,9 +7,9 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     PrintLine(TEXT("Mooooo! Let's play some Bull Cows!")); // Just like std::cout << "Welcome!";                   // using TEXT macro for strings
     // For strings, instead of std::string Word = "Welcome!"; use FString.
 
-    // Setting up game
-    HiddenWord = TEXT("dung"); // Set the HiddenWord
-    lives = 4;                 // instead of int, use int32
+    SetupGame();
+
+    // prompt player for guess
 }
 
 void UBullCowCartridge::OnInput(const FString &Input) // When the player hits enter
@@ -20,6 +20,12 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
     {
         PrintLine(TEXT("Guess the 4 letter word!"));
 
+        // check guess
+        // check if isogram
+        // guess again no lives lost
+        // check if correct number of chars
+        // guess again no lives lost
+
         if (Input == HiddenWord)
         {
             PrintLine("Huzzah! You guessed the hidden word!");
@@ -28,9 +34,10 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
         else
         {
             PrintLine("Moo... You got it wrong. Try again!");
+            // Show lives left
+            // Guess again
         }
-        // check if isogram
-        // check if correct number of chars
+
         lives--;
     }
 
@@ -40,9 +47,16 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
         PrintLine("You ran out of lives. :(");
     }
     // Prompt to play again
-    PrintLine("Would you like to play again?")
+    PrintLine("Would you like to play again?");
+    // Check input
+    // Play again or quit
 }
 
+void UBullCowCartridge::SetupGame()
+{
+    HiddenWord = TEXT("dung");
+    Lives = 4;
+}
 /* 
 Game Loop 
 Start the game
