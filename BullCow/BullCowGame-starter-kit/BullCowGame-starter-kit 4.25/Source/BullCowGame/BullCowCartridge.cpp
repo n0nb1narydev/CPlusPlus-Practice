@@ -46,21 +46,8 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
             {
                 PrintLine(TEXT("**You have %i lives left!**"), Lives);
             }
-            // check guess
-            // check if isogram
-            // guess again no lives lost
-            // check if correct number of chars
-            // guess again no lives lost
-            // Guess again
         }
     }
-
-    // Prompt to play again
-    // PrintLine(TEXT("Would you like to play again?"));
-    /*      
-    Check input
-    Play again or quit 
-    */
 }
 
 void UBullCowCartridge::SetupGame()
@@ -80,12 +67,4 @@ void UBullCowCartridge::EndGame()
     bGameOver = true;
     PrintLine(TEXT("Press ENTER to play again!"));
 
-} /* 
-Game Loop 
-Start the game
-Set the Hidden Word
-Prompt for the gues
-is the guess correct
-did they win or lose?
-play again?
-*/
+}
