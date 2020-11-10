@@ -17,9 +17,9 @@ public:
 	void SetupGame();
 	void EndGame();
 	void ProcessGuess(FString Guess);
-	bool IsIsogram(FString Word);
+	bool IsIsogram(FString Word) const;
 
-private:
+private: // member variables
 	FString HiddenWord;
 	int32 Lives;
 	bool bGameOver;

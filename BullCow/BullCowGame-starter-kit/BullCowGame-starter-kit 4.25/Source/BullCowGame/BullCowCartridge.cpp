@@ -7,7 +7,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
 
     SetupGame();
 
-    PrintLine(TEXT("The hidden word is: %s."), *HiddenWord); // debug line
+    // PrintLine(TEXT("The hidden word is: %s."), *HiddenWord); // debug line
 }
 
 void UBullCowCartridge::OnInput(const FString &Input) // When the player hits enter
@@ -33,9 +33,6 @@ void UBullCowCartridge::SetupGame()
 
     PrintLine(TEXT("Guess the %i letter word!\nYou have %i lives."), HiddenWord.Len(), Lives);
     PrintLine(TEXT("Type in your guess and press ENTER."));
-
-    const TCHAR HW[] = TEXT(dung);
-    PrintLine(TEXT("Character 1 of the hidden word is: %c."), HiddenWord[0]);
 }
 
 void UBullCowCartridge::EndGame()
@@ -88,11 +85,9 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
         PrintLine(TEXT("**You have %i lives left!**"), Lives);
         return;
     }
-
-    // Show player Bulls and Cows
 }
 
-bool UBullCowCartridge::IsIsoGram(FString Word)
+bool UBullCowCartridge::IsIsogram(FString Word) const
 {
     // is bIsIsogram function
     // guess passed in a parameter
@@ -105,4 +100,5 @@ bool UBullCowCartridge::IsIsoGram(FString Word)
     // first step: does first letter in guess match first letter in word
     //      does it match any letter in word?
     // repeat this with all letters in guess.
+    return true;
 }
